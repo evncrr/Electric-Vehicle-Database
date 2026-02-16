@@ -10,7 +10,8 @@ FROM ev_population_raw;
 
 -- Registrations
 INSERT INTO registration (VIN)
-SELECT VIN FROM ev_population_raw;
+SELECT VIN
+FROM ev_population_raw;
 
 -- CAFV Status
 INSERT INTO cafv_status (VIN, DOL_Vehicle_ID, CAFV)

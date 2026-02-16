@@ -1,24 +1,18 @@
-CREATE DATABASE IF NOT EXISTS vehicles /*!40100 DEFAULT CHARACTER SET utf8mb3 */;
+CREATE DATABASE IF NOT EXISTS vehicles;
 USE vehicles;
 
--- Step 1: Drop the most dependent child tables first
+-- Drop tables in proper order
 DROP TABLE IF EXISTS cafv_status;
 DROP TABLE IF EXISTS vehicle_utility;
 DROP TABLE IF EXISTS vehicle_location;
 DROP TABLE IF EXISTS census;
-
--- Step 2: Drop tables that are now free of dependencies
 DROP TABLE IF EXISTS registration;
 DROP TABLE IF EXISTS utility;
 DROP TABLE IF EXISTS district;
 DROP TABLE IF EXISTS location;
-
--- Step 3: Drop parent table last
 DROP TABLE IF EXISTS vehicle;
-
 
 -- Vehicle table
-DROP TABLE IF EXISTS vehicle;
 CREATE TABLE vehicle (
     VIN VARCHAR(20) NOT NULL PRIMARY KEY,
     Make VARCHAR(50),
@@ -30,7 +24,6 @@ CREATE TABLE vehicle (
 );
 
 -- Location table
-DROP TABLE IF EXISTS location;
 CREATE TABLE location (
     Location_ID INT AUTO_INCREMENT PRIMARY KEY,
     County VARCHAR(50),
@@ -41,14 +34,12 @@ CREATE TABLE location (
 );
 
 -- District table
-DROP TABLE IF EXISTS district;
 CREATE TABLE district (
     District_ID INT AUTO_INCREMENT PRIMARY KEY,
     Legislative_District INT DEFAULT NULL
 );
 
 -- Registration table
-DROP TABLE IF EXISTS registration;
 CREATE TABLE registration (
     DOL_Vehicle_ID INT AUTO_INCREMENT PRIMARY KEY,
     VIN VARCHAR(20),
@@ -58,14 +49,12 @@ CREATE TABLE registration (
 );
 
 -- Utility table
-DROP TABLE IF EXISTS utility;
 CREATE TABLE utility (
     Utility_ID INT AUTO_INCREMENT PRIMARY KEY,
     Utility_Company VARCHAR(50)
 );
 
 -- Vehicle_Utility table
-DROP TABLE IF EXISTS vehicle_utility;
 CREATE TABLE vehicle_utility (
     VIN VARCHAR(20),
     Utility_ID INT,
@@ -75,7 +64,6 @@ CREATE TABLE vehicle_utility (
 );
 
 -- Vehicle_Location table
-DROP TABLE IF EXISTS vehicle_location;
 CREATE TABLE vehicle_location (
     VIN VARCHAR(20),
     Location_ID INT,
@@ -85,7 +73,6 @@ CREATE TABLE vehicle_location (
 );
 
 -- CAFV status table
-DROP TABLE IF EXISTS cafv_status;
 CREATE TABLE cafv_status (
     VIN VARCHAR(20),
     DOL_Vehicle_ID INT,
@@ -96,7 +83,6 @@ CREATE TABLE cafv_status (
 );
 
 -- Census table
-DROP TABLE IF EXISTS census;
 CREATE TABLE census (
     Census_ID INT AUTO_INCREMENT PRIMARY KEY,
     Census_Tract_2020 VARCHAR(50),

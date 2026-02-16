@@ -12,10 +12,3 @@ CREATE TABLE ev_population_raw (
     CAFV_Status VARCHAR(100),
     Utility_Company VARCHAR(50)
 );
-
-LOAD DATA INFILE "C:\Users\evanc\OneDrive\Documents\GitHub\Electric-Vehicle-Database\Electric_Vehicle_Population_Data.csv"
-INTO TABLE ev_population_raw
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
